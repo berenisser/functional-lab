@@ -18,4 +18,4 @@ const applyDiscount = (cart,discount) => {
   return [current].concat(applyDiscount(carrito,discount));
 };
 
-module.exports = applyDiscount;
+module.exports = discount;
