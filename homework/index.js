@@ -1,22 +1,67 @@
-exports.factorial = (n) => { (n == 0) ? 1 : (n * factorial(n - 1)) }
+//http://www.academia.edu/9725889/Ejemplos_de_Recursividad
+exports.factorial = (n) => {
+	return (n == 0) ? 1 : n * exports.factorial(n-1);
+}
 
-exports.fibonacci = (n) => { ( n == 1 || n == 2) ? 1 : fibonacci(n-1)+fibonacci(n-2) }
+exports.fibonacci = (n) => { 
+	return ( n == 1 || n == 2) ? 1 : exports.fibonacci(n-1)+exports.fibonacci(n-2) 
+}
 
-exports.divide = (a, b) => { (b>a) ? 0 : divide(a-b, b) + 1 }
+exports.divide = (a, b) => { 
+	return (b>a) ? 0 : exports.divide(a-b, b) + 1 
+}
 
-exports.invert = (n) => { (n<10) ? n : ( (n%10)+ invert(n/10) * 10 ) }
+//http://www.replit.com/HV30/1
+exports.invert = (n) => {   
+	function recursiva ( n, res ){
+		if(!n){
+			return res
+		}
 
-exports.suma = (n) => { (n == 0) ? n : ( suma(n/10) + (n%10) ) }
-
-exports.multi = (a, b) => {
-	if(a == 1){
-		return b
+		res = (res * 10) + (n%10)
+		return recursiva( Math.floor(n/10), res )
 	}
-	if( a % 2 != 0){
-		return b + multi( a/2, b*2 )
-	} else {
-		return multi( a/2, b*2 )
+	return recursiva(n, 0)
+}
+
+exports.suma = (n) => { 
+	return (n == 0) ? n : Math.floor( exports.suma(n/10) + (n%10) ) 
+}
+
+//http://www.geeksforgeeks.org/multiply-two-numbers-without-using-multiply-division-bitwise-operators-and-no-loops/
+exports.multi = (a, b) => {
+	if(b == 0){
+		return 0
+	}
+	if( b > 0){
+		return a + exports.multi( a, b-1 )
+	} 
+	if( b < 0){
+		return -exports.multi( a, -b )
 	}
 }
 
-exports.sumArr = (arr) => { (arr.length === 0) ? 0 : arr[0] + sum(arr.slice(1)) }
+exports.sumArr = (arr) => { 
+	return (arr.length === 0) ? 0 : arr[0] + exports.sumArr(arr.slice(1)) 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
