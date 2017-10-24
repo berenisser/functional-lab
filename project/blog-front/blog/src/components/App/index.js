@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       posts: [],
     }
-  }
+  } 
 
 //setStae permite modificar el estado inicial de un component
   componentWillMount() {
